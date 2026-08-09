@@ -21,10 +21,12 @@ const aiController = require("./src/controllers/aiController");
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: process.env.CLIENT_ORIGIN || "*", credentials: true },
+  cors: {
+    origin: "*"
+  }
 });
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "*", credentials: true }));
+app.use(cors());
 app.use(express.json());
 
 // Make io available to controllers that want to push live updates (e.g. new notices).
